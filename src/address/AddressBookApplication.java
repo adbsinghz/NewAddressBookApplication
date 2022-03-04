@@ -65,25 +65,23 @@ public class AddressBookApplication {
 
 
 
-       // initAddressBookExercise(ab);
-
-
 
     }
 
+    /**
+     * initializes 2 AddressEntry instances with hard-coded data. Then adds entries to AddressBook class passed to function.
+     * @param ab is an instance of AddressBook class
+     */
 
     public static void initAddressBookExercise(AddressBook ab) {
-      //  AddressEntry ab1 = new AddressEntry("Arsh","Singh","Red Ribbon","Manteca","CA",95337,"209-455-4111","arshsingha00@gmail.com");
-     //   AddressEntry ab3 = new AddressEntry("Arfsdsh","Sinfdfdgh","Refdfdd Ribbon","Mantfdfdeca","CgdgA",953337,"209-45f5-4111","arshsinggha00g@gmail.com");
+        AddressEntry ab1 = new AddressEntry("Arsh","Singh","Red Ribbon","Manteca","CA",95337,"209-455-4111","arshsingha00@gmail.com");
+        AddressEntry ab3 = new AddressEntry("Arfsdsh","Sinfdfdgh","Refdfdd Ribbon","Mantfdfdeca","CgdgA",953337,"209-45f5-4111","arshsinggha00g@gmail.com");
 
-       // AddressEntry ab2 = new AddressEntry("Arsh","Singh","Red Ribbon","Manteca","CA",95337,"209-455-4111","arshsingha00@gmail.com");
+        AddressEntry ab2 = new AddressEntry("Arsh","Singh","Red Ribbon","Manteca","CA",95337,"209-455-4111","arshsingha00@gmail.com");
 
-      //  AddressEntry ab2 = new AddressEntry();
-       // ab.readFromFile("/Users/arshdeepsingh/Downloads/PDF slides/testinto.txt");
-    //    ab.add(ab1);
-       // ab.remove(ab2);
-      //  ab.add(ab2);
-
+        ab.add(ab1);
+        ab.add(ab3);
+        ab.add(ab2);
 
     }
 

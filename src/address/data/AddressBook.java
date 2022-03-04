@@ -110,33 +110,43 @@ public class AddressBook {
 
         TreeSet<AddressEntry> s = this.getPre(ln);
         Scanner keyboard = new Scanner(System.in);
-
-        try{
-            if(s.size()== 1){
-                System.out.println(("The following entry was found in the address book. "));
-                System.out.printf("%-3s" + s.first() + "\n",  " ");
-                System.out.println("Hit 'y' to remove the entry or 'n' to return to main menu" );
-                if (keyboard.nextLine().compareTo("y")==0)
+        try {
+            if (s.size() == 1) {
+                System.out.println("The following entry was found in the address book.");
+                System.out.printf("%-3s" + s.first() + "\n", " ");
+                System.out.println("Hit 'y' to remove the entry or 'n' to return to main menu");
+                if (keyboard.nextLine().compareTo("y") == 0)
                     addressEntryList.get(s.first().getPrompt_LastName()).remove(s.first());
-            } else if(s.size() > 1){
+            } else if (s.size() > 1) {
                 ArrayList<AddressEntry> list = new ArrayList<>();
                 int i = 1;
-                System.out.println("The following entries were found in the address book,"
-                + "select number of entry you wish to remove: \n");
-
-                for(AddressEntry entry : s){
+                System.out.println("The following entries were found in the address book," +
+                        "select number of entry you wish to remove:\n");
+                for (AddressEntry entry : s) {
                     list.add(entry);
                     System.out.printf("%-3s" + entry + "\n\n", i + ":");
                     i++;
                 }
-                int a = keyboard.nextInt();
-                String z = list.get(a-1).getPrompt_LastName();
-                remove(z);
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+                int removalIndex = keyboard.nextInt() - 1;
+                keyboard.nextLine();
+                if(removalIndex < list.size() && removalIndex >= 0)
+                    System.out.println("Hit 'y' to remove the following entry or 'n' to return to main menu:\n");
+                System.out.printf("%-3s" + list.get(removalIndex) + "\n\n", "  ");
+                if (keyboard.nextLine().compareTo("y") == 0) {
+                    TreeSet<AddressEntry> set = addressEntryList.get(list.get(removalIndex).getPrompt_LastName());
+                    set.remove(list.get(removalIndex));
+                }
+            } else
+                System.out.println("No entries with last name " + ln + " were found.");
         }
+        catch(InputMismatchException e) {
+            System.out.println("Error: You need to enter a valid integer. No action taken.");
+        }
+        catch(IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid element selection. No action taken.");
+        }
+
+
 
     }
 
